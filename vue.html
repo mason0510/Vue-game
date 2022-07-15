@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+定义vie 定义model 创建Vue实例或者ViewModel
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles/demo.css">
+</head>
+<body>
+    <!--这是我的第一个组件-->
+    <div id="app">
+        <!--会被数据对象取代-->
+<!--        <h1>{{ message }}</h1>-->
+        <!--常用属性
+            v model
+            v-if指令 常用
+            v-show指令 控制添加css属性 display
+            v-else指令 辅助性质 当v-if不显示的时候生效
+            v-for指令 常用 v-for="item in items"
+            v-bind指令 后面可以带参数
+            v-on指令 用法同上
+        -->
+<!--        <input type="text" v-model="message"/>-->
+<!--        <button @click="changeMessage">Change Message</button>-->
+
+<!--        <h1 v-if="yes">yes</h1>-->
+<!--        &lt;!&ndash;false不显示&ndash;&gt;-->
+<!--        <h1 v-if="no">No</h1>-->
+<!--        <h1 v-show="age>=25">Age:{{age}}</h1>-->
+<!--        <h1 v-if="name.indexOf('jack')>=0">Name:{{name}}</h1>-->
+
+<!--        <table  >-->
+<!--            <thead>-->
+<!--                <tr>-->
+<!--                    <th>Name</th>-->
+<!--                    <th>Age</th>-->
+<!--                </tr>-->
+<!--            <tbody>-->
+<!--                <tr v-for="item in people">-->
+<!--                    <td>{{item.name}}</td>-->
+<!--                    <td>{{item.age}}</td>-->
+<!--                </tr>-->
+<!--        </table>-->
+
+
+        <ul class="pagination">
+            <li v-for="item in pageCount">
+                <!-- href="javascript:void(0);" 避免暴漏js代码-->
+                <a href="javascript:void(0);" v-bind:class="activeNumber === item + 1 ? 'active' : ''">{{ item + 1}}</a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+<!--<script src="js/vue.js"></script>-->
+<script src="https://unpkg.com/vue@next"></script>
+
+<script>
+    <!--这是我的第一个组件-->
+    var app = new Vue({
+        el: '#app',//表示实例挂在到id上
+        data: {
+            people:[
+                {name:'jack',age:25},
+                {name:'tom',age:30},
+                {name:'jerry',age:35}
+            ],
+            activeNumber: 1,
+            pageCount: 10
+        },
+        methods: {
+            changeMessage: function() {
+                this.message = 'Goodbye Vue!'
+            }
+        }
+    })
+</script>
+</html>
+
